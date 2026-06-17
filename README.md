@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Customer Feedback Sentiment Dashboard
 
-## Getting Started
+INTP302 — Midterm Team Mini-Project
+Don Joshua Anil & Willard Sunil
 
-First, run the development server:
+A web app where staff submit customer feedback text and instantly see whether it is Positive, Negative, Neutral, or Mixed — powered by Azure AI Language. All entries are stored in Azure Table Storage and displayed in a live dashboard.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Azure Services Used---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Azure App Service — hosts the Next.js application
+Azure AI Language — sentiment analysis on submitted feedback text
+Azure Table Storage — stores each feedback entry and its sentiment result
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+setup instructions--
 
-## Learn More
+-npm install
+-npm run dev
+-open localhost:3000
 
-To learn more about Next.js, take a look at the following resources:
+-copy Azure keys to .env.local file
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Known Limitations--
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Sentiment accuracy may be lower for very short or sarcastic text
+Azure AI Language works best with English — other languages may be less reliable
+No user authentication — anyone with the URL can submit and view entries
+All test data is synthetic; no real customer data is collected
 
-## Deploy on Vercel
+Responsible AI
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Fairness: Sentiment accuracy may vary across languages, writing styles, and cultural expressions.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Reliability: AI results should not be treated as final decisions, especially for borderline or mixed responses. Confidence scores are shown to help users judge when manual review is needed.
+
+Privacy: No real personal data is collected. API keys are stored in environment variables and never exposed in client-side code or the GitHub repository.
+
+Transparency: The UI clearly states that AI is analyzing the text and displays both the sentiment label and confidence score with every result.
+
+Accountability: Human staff remain responsible for acting on feedback. This app is a decision-support tool, not a replacement for human judgment.
